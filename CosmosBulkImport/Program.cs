@@ -5,7 +5,7 @@
     using System;
     using System.IO;
 
-    public class Options
+    class Options
     {
         [Option('e', "endpoint", Required = true, HelpText = "The endpoint of your Cosmos DB account")]
         public string Endpoint { get; set; }
@@ -24,7 +24,7 @@
         static void Main(string[] args)
         {
             var optionsParseResult = Parser.Default.ParseArguments<Options>(args);
-            if (optionsParseResult is NotParsed<Options> notParsedOptions)
+            if (optionsParseResult is NotParsed<Options>)
             {
                 return;
             }

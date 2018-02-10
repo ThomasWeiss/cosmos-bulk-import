@@ -4,7 +4,7 @@
     using System.IO;
     using System.Text;
 
-    public interface IFileReader
+    interface IFileReader
     {
         void Load(string path);
         bool Validate();
@@ -12,7 +12,7 @@
         Document GetNextDocument();
     }
 
-    public class FileReader : IFileReader
+    class FileReader : IFileReader
     {
         public void Load(string path)
         {

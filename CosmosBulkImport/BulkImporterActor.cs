@@ -16,7 +16,7 @@
         }
     }
 
-    public class BulkImporterActor : UntypedActor
+    class BulkImporterActor : UntypedActor
     {
         // these are the messages that can be received by our actor:
         // - the initial startup message sent after the actor is created
@@ -27,21 +27,21 @@
         }
 
         // - a request to upload a document
-        public class UploadRequestMessage
+        class UploadRequestMessage
         {
             public UploadRequestMessage(Document document) => Document = document;
             public Document Document { get; }
         }
 
         // - a notification that an upload has succeeded
-        public class UploadSucceededMessage
+        class UploadSucceededMessage
         {
             public UploadSucceededMessage(ResourceResponse<Document> resourceResponse) => ResourceResponse = resourceResponse;
             public ResourceResponse<Document> ResourceResponse { get; }
         }
 
         // - a notification that an upload has failed
-        public class UploadFailedMessage
+        class UploadFailedMessage
         {
             public UploadFailedMessage(Document document, Exception exception)
             {
@@ -53,7 +53,7 @@
         }
 
         // - a request to print stats to the console
-        public class PrintStatsMessage { }
+        class PrintStatsMessage { }
 
         private int _dataSize = 0;
         private int _dataProcessed = 0;
