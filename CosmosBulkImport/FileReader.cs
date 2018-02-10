@@ -1,9 +1,9 @@
-﻿using Microsoft.Azure.Documents;
-using System.IO;
-using System.Text;
-
-namespace CosmosBulkImport
+﻿namespace CosmosBulkImport
 {
+    using Microsoft.Azure.Documents;
+    using System.IO;
+    using System.Text;
+
     public interface IFileReader
     {
         void Load(string path);

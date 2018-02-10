@@ -5,14 +5,6 @@
     using System;
     using System.IO;
 
-    static class DateTimeExtensions
-    {
-        public static int SecondsSince(this DateTime dateTime)
-        {
-            return (int)(DateTime.Now - dateTime).TotalSeconds;
-        }
-    }
-
     public class Options
     {
         [Option('e', "endpoint", Required = true, HelpText = "The endpoint of your Cosmos DB account")]

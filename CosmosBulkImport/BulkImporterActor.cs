@@ -8,6 +8,14 @@
     using System.IO;
     using System.Linq;
 
+    static class DateTimeExtensions
+    {
+        public static int SecondsSince(this DateTime dateTime)
+        {
+            return (int)(DateTime.Now - dateTime).TotalSeconds;
+        }
+    }
+
     public class BulkImporterActor : UntypedActor
     {
         // these are the messages that can be received by our actor:
@@ -112,8 +120,10 @@
                     _inFlightRequests--;
                     if ((uploadFailedMessage.Exception is DocumentClientException ex) && ((int)ex.StatusCode == 429))
                     {
+                        // the request has been throttled by the service
                         UpdateThrottleStats();
                     }
+                    // enqueue the document so we upload it again on a subsequent request
                     _failedUploads.Enqueue(uploadFailedMessage.Document);
 
                     DispatchUploadRequests();
